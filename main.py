@@ -9,12 +9,17 @@ df = pd.read_csv("topics.csv")
 for index, row in df.iterrows():
     pdf.add_page()
 
+    # add header
     pdf.set_font('Arial', 'B', 24)
     pdf.set_text_color(100, 100, 100)
     pdf.cell(w=0, h=12, text=row["Topic"], align='l' ,
              ln=1)
+
+    # add line
     for y in range(20, 298, 10):
         pdf.line(10, y, 200, y)
+
+    # add footer
     pdf.ln(260)
     pdf.set_font('Arial', 'I', 8)
     pdf.set_text_color(180, 180, 180)
@@ -22,8 +27,12 @@ for index, row in df.iterrows():
 
     for i in range(row["Pages"]-1):
         pdf.add_page()
+
+        # add line
         for y in range(20, 298, 10):
             pdf.line(10, y, 200, y)
+
+        # add footer
         pdf.ln(272)
         pdf.set_font('Arial', 'I', 8)
         pdf.set_text_color(180, 180, 180)
